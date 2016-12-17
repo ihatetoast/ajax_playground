@@ -1,0 +1,54 @@
+
+@import url('https://fonts.googleapis.com/css?family=Mirza|Open+Sans+Condensed:300|PT+Sans');
+// font-family: 'Mirza', cursive;
+// font-family: 'Open Sans Condensed', sans-serif;
+// font-family: 'PT Sans', sans-serif;
+
+body{
+	background-image: url("https://www.unlimitedplay.org/wp-content/uploads/2013/04/Zachary-s-Playground-Pictures-020-2.jpg");
+	background-size: cover;
+	padding: 0 2em;
+	font-family: 'PT Sans', sans-serif;
+}
+a{
+	text-decoration: none;
+}
+h1{
+	font-family: 'Mirza', cursive;
+}
+h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+header{
+	margin-bottom: 1em;
+	h1{
+		font-size: 4em;
+		text-align: center;
+		margin-bottom: 0;
+	}
+	p{
+		margin: 0 2em;
+	}
+
+}
+section{
+	background: #EEEFEF;
+	width: 50%;
+	margin: 0 auto;
+	padding: 0.2em 0.5em;
+	border: 2px solid #092A6F;
+	.unit{
+		border-bottom: 2px dashed #FBC907;
+		margin-bottom: 1em;
+		padding-bottom: 1em;
+
+	}
+	.example{
+		border: 1px solid #092a6f;
+		background: #C2F4FF;
+		padding: 1em;
+	}
+	.hideAnimalBtn{
+		display: none;
+	}
+}
