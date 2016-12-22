@@ -64,22 +64,39 @@ $(document ).ready(function() {
 		$.ajax({
 			dataType: 'JSON',
 			type: 'GET',
-			url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=331483c19de3f58d1dc93765a41556ce&tags='+flickrSearchTerm+'&format=json&nojsoncallback=1',
+			url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2014b01ace4c7abef0535438e3481862&tags='+flickrSearchTerm+'&per_page=500&format=json&nojsoncallback=1',
 			success: function(data){
-				//gives me the number of photos
-				console.log("success console.log: "+data.photos.total);
-				//gives me a random number
-				//only do 0-99 as that is how many per page. 
-				//deal with getting the page number laster.
+				console.log("success: you have entered the tag "+flickrSearchTerm);
+			// https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
 			
-				var randoPhoto = Math.floor(Math.random() * (100));
-				console.log("random number is "+ randoPhoto);
+				console.log(data);
+				var totalPhotos = data.photos.total;
+				console.log("Total is "+totalPhotos);
+
+				//500 ret per page, just get rando from that page
+				var max = 0;
+				if(totalPhotos>=500){max = 500;}else{max = totalPhotos;}
+				console.log("max: "+max);
+			
+				var randoPhoto = Math.floor(Math.random() * (max));
+				console.log("random photo index is  "+randoPhoto);
+				console.log(data.photos.photo[randoPhoto]);
+				var farmId = data.photos.photo[randoPhoto].farm;
+				var serverId = data.photos.photo[randoPhoto].server;
+				var userId = data.photos.photo[randoPhoto].id;
+				var secret = data.photos.photo[randoPhoto].secret;
+				console.log("farm: "+farmId+" server: "+serverId+" User id: "+userId+" secret: "+secret);
+				
+				$("#flickerPhoto").html('<img src="https://farm'+farmId+'.staticflickr.com/'+serverId+'/'+userId+'_'+secret+'.jpg">');
+			
+				// for how to get photo: https://www.flickr.com/services/api/misc.urls.html
 				if(data.photos.photo[randoPhoto].title===""){
 					$flickrInfo.html(`<span>No title given</span>`);
 				} else {
 					$flickrInfo.html(`<span>Title: ${data.photos.photo[randoPhoto].title}</span>`);
 				}
 				$('#flickrSearch').val("");
+				// $('#flickerPhoto').html("");
 			},
 			error: function(error){
 				// console.log(error);
