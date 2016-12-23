@@ -64,6 +64,7 @@ $(document ).ready(function() {
 		$.ajax({
 			dataType: 'JSON',
 			type: 'GET',
+			//url api-key doesn't last. why?
 			url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2014b01ace4c7abef0535438e3481862&tags='+flickrSearchTerm+'&per_page=500&format=json&nojsoncallback=1',
 			success: function(data){
 				console.log("success: you have entered the tag "+flickrSearchTerm);
@@ -106,10 +107,41 @@ $(document ).ready(function() {
 				console.log('You have done something.')
 			}
 		});
-		// function addFlickr(data){
-		// 	$flickrInfo.prepend(`<span>Title: ${data.photos.photo[randoPhoto].title}</span>`)
-		// }
+	});
+	/**************************************************/
+	/*               SLIP ADVICE                      */
+	/**************************************************/
 
+	var $adviceSlip = $("#adviceSlip");
+	var $adviceClear = $("#adviceClearBtn");
+	$adviceClear.hide();
+	function getAdvice(data){
+			$adviceSlip.prepend(
+				`<div class="receipt">
+					<span class="advice">Advice: ${data.slip.advice}</span>
+					<p>If you disagree with this advice and would like to make a complaint, please contact Jack Doodie and quote advice slip no. <span>${data.slip.slip_id}</span>. Thank you.</p>
+				</div>`
+			);
+		}
+	$adviceClear.click(function(){
+		$adviceSlip.html("");
+	});
+	$('#btn-slip').click(function(){
+		// alert("advise me button clicked");
+		$adviceClear.show();
+		$.ajax({
+			dataType: 'JSON',
+			type: 'GET',
+			url: 'http://api.adviceslip.com/advice',
+			success: function(data){
+				console.log("you got advice: "+data.slip.advice);
+				getAdvice(data)
+
+			},
+			error: function(error){
+				alert('Error loading Advice Slip.');
+			}
+		});
 	});
 
 });

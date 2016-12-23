@@ -1,8 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css?family=Mirza|Open+Sans+Condensed:300|PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=Mirza|Open+Sans+Condensed:300|PT+Sans|VT323');
 // font-family: 'Mirza', cursive;
 // font-family: 'Open Sans Condensed', sans-serif;
 // font-family: 'PT Sans', sans-serif;
+//font-family: 'VT323', monospace;
 
 body{
 	background-color: #FFD166;
@@ -49,5 +50,17 @@ section{
 	}
 	.hideAnimalBtn{
 		display: none;
+	}
+}
+
+.receipt{
+	background: #fff;
+	margin: 0.2em 4em;
+	font-family: 'VT323', monospace;
+	padding: 1.5em 2em 0 2em;
+	border: 2px solid #979797;
+	border-bottom: dotted #979797;
+	span{
+		font-size: 1.5em;
 	}
 }
