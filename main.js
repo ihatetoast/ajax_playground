@@ -65,7 +65,7 @@ $(document ).ready(function() {
 			dataType: 'JSON',
 			type: 'GET',
 			//url api-key doesn't last. why?
-			url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2014b01ace4c7abef0535438e3481862&tags='+flickrSearchTerm+'&per_page=500&format=json&nojsoncallback=1',
+			url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ffb56732754d7dbcf679387c568c8730&tags='+flickrSearchTerm+'&per_page=500&format=json&nojsoncallback=1',
 			success: function(data){
 				console.log("success: you have entered the tag "+flickrSearchTerm);
 			// https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
